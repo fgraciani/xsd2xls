@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AerodromeOrPublishedPointIdType" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <enumerators>
+    <ssm:Enumerator name="aerodrome"/>
+    <ssm:Enumerator name="point"/>
+  </enumerators>
+</ssm:Enum>

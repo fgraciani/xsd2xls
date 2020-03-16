@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AUPManualEntries" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">AUP Entries, i.e. CDR openings/closures and RSA allocations, to be provided by the client to NM.</para>
+          <para xmlns="http://docbook.org/ns/docbook">The NM system does not support cross-AIRAC AUP entries, i.e. an AUPRSAAllocation or AUPCDROpeningClosure cannot have a validity period crossing an AIRAC boundary (midnight on an AIRAC date). Consequently, it is the client's responsibility to "cut" the AUP entries within an AUP to comply with this constraint.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="cdrs" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">The list of explicit CDR openings and closures of this AUP.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="ADRMessageType" package="eurocontrol.cfmu.cua.b2b.aixm"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="rsas" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">The list of explicit RSA allocations of this AUP.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="ADRMessageType" package="eurocontrol.cfmu.cua.b2b.aixm"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

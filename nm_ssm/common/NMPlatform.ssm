@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="NMPlatform" package="eurocontrol.cfmu.cua.b2b.common">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>
+            NM B2B consumer can be connected to different types of platform depending on the end point used.
+            The NM platform is reflected in the URL used to access the NM B2B provider agent.
+          </docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="executionEnvironment" optional="false">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Defines the execution environment where the NM B2B provider agent is running.</docbook:para>
+              <docbook:para><emphasis role="underline">Examples</emphasis>: OPS</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:EnumType name="ExecutionEnvironment" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="applicationInstance" optional="false">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Unique name of the system running the NM B2B provider agent.</docbook:para>
+              <docbook:para><emphasis role="underline">Examples</emphasis>: CUA_OPA</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:StringType rule="UALPHA{3}_UALPHA{2}(UALPHA|DIGIT){1}"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

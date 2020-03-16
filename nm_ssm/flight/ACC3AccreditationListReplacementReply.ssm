@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="ACC3AccreditationListReplacementReply" package="eurocontrol.cfmu.cua.b2b.flight">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="ACC3AccreditationListReplacementReply" value="show_associations"/>
+            <ssm:AnnotationEntry key="ACC3AccreditationListReplacementReplyData" value="show_associations"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">An ACC3 accreditation list replacement reply.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <specialises>
+    <ssm:ClassType name="Reply" package="eurocontrol.cfmu.cua.b2b.common"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="data" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">The data.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="ACC3AccreditationListReplacementReplyData" package="eurocontrol.cfmu.cua.b2b.flight"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

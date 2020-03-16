@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AerodromeICAOId" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">ICAO id of an Aerodrome.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <type>
+    <ssm:StringType rule="UALPHA{4}"/>
+  </type>
+</ssm:Typedef>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="DateYearMonthDay" package="eurocontrol.cfmu.cua.b2b.common">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">String representation of a date (Gregorian Calendar - UTC).</para>
+          <para xmlns="http://docbook.org/ns/docbook">Its format is "<code>YYYY-MM-DD</code>". Example: "<code>2013-12-01</code>".</para>
+          <para xmlns="http://docbook.org/ns/docbook">Possible values of <code>YYYY</code> are 4-digit numeric in [0001, ..., 9998].</para>
+          <para xmlns="http://docbook.org/ns/docbook">Possible values of <code>MM</code> are 2-digit numeric in [01, ..., 12].</para>
+          <para xmlns="http://docbook.org/ns/docbook">Possible values of <code>DD</code> are 2-digit numeric in [01, ..., 31] (depending on the month).</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <type>
+    <ssm:StringType rule="DIGIT{4}-DIGIT{2}-DIGIT{2}"/>
+  </type>
+</ssm:Typedef>

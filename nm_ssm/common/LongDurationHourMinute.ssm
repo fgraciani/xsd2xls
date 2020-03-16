@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="LongDurationHourMinute" package="eurocontrol.cfmu.cua.b2b.common">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>String representation of a long duration with minute precision.</docbook:para>
+          <docbook:para>Its format is "hhhhhhhhmm" . Example: "73828" (duration of 738 hours 28 minutes).</docbook:para>
+          <docbook:para>Possible values of hhhhhhhh are 8-digit numeric in [00000000, ..., 99999999].</docbook:para>
+          <docbook:para>Possible values of mm are 2-digit numeric in [00, ..., 59].</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <type>
+    <ssm:StringType rule="DIGIT{4,10}"/>
+  </type>
+</ssm:Typedef>

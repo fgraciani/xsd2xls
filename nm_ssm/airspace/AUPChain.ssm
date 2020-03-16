@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AUPChain" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">Represents an AUP chain, i.e. the AUP baseline of a (AMC, day) pair and its subsequent versions (UUPs) in the day.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="chainDate">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">The date of the AUP chain.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DateYearMonthDay" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="amcId">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">The ANU id of the AMC to which this AUP chain belongs.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="AirNavigationUnitId" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="aups">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">The ordered list of AUP summaries in the chain. The list is ordered according to the sequence of versions: the first summary in the list is the baseline AUP, the second one is the first update version after the baseline AUP, and so forth. The array can be empty.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType>
+          <itemType>
+            <ssm:ClassType name="AUPSummary" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

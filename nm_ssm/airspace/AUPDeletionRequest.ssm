@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="AUPDeletionRequest" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="AUPDeletionRequest" value="show_associations"/>
+            <ssm:AnnotationEntry key="LastUpdate" value="show_associations"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Request to delete an existing AUP.</docbook:para>
+          <docbook:para>Via NOP/B2B, an AUP can only be deleted by the AMC owning the AUP.</docbook:para>
+          <docbook:para>Deleting an AUP can only be done when updating is possible (See <link href="refman://Airspace.PortTypesAndDataTypes.AUPTransitionsFigure">AUP Status Transitions</link>).</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <specialises>
+    <ssm:ClassType name="Request" package="eurocontrol.cfmu.cua.b2b.common"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="aupId">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Id of the AUP to be deleted.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="AUPId" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="lastUpdate">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>See AUPUpdateRequest.lastUpdate.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="LastUpdate" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

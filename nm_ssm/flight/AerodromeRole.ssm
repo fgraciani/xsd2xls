@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AerodromeRole" package="eurocontrol.cfmu.cua.b2b.flight">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">Used to specified if an aerodrome is meant as of departure, arrival or both.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <enumerators>
+    <ssm:Enumerator name="DEPARTURE"/>
+    <ssm:Enumerator name="ARRIVAL"/>
+    <ssm:Enumerator name="BOTH"/>
+  </enumerators>
+</ssm:Enum>

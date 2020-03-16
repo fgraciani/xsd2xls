@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="WeekDay" package="eurocontrol.cfmu.cua.b2b.common">
+  <annotations>
+    <ssm:Annotation name="xsd-strict"/>
+  </annotations>
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>WeekDay</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <enumerators>
+    <ssm:Enumerator name="SUNDAY"/>
+    <ssm:Enumerator name="MONDAY"/>
+    <ssm:Enumerator name="TUESDAY"/>
+    <ssm:Enumerator name="WEDNESDAY"/>
+    <ssm:Enumerator name="THURSDAY"/>
+    <ssm:Enumerator name="FRIDAY"/>
+    <ssm:Enumerator name="SATURDAY"/>
+  </enumerators>
+</ssm:Enum>

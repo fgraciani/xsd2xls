@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="EAUPChainRetrievalRequest" package="eurocontrol.cfmu.cua.b2b.airspace" usesManualValidation="true">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="EAUPChainRetrievalRequest" value="show_associations"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Request to retrieve an EAUP chain from its date, i.e. from the release date of its EAUP baseline.</docbook:para>
+          <docbook:para>Customers must take into account that post-ops (i.e. post-tactical) released EAUP chains are immutable: they will not gain or lose EAUPs, and the EAUPs they contain will not be modified anymore. Consequently, NM requires its customers to undertake their best effort to avoid repeatedly retrieving the same post-ops EAUP chain.</docbook:para>
+          <docbook:para>Given that some hours always elapse between two successive EAUP releases, NM requires its customers not to poll the service with high frequency, i.e. certainly not more than every minute, a lower frequency being preferred.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <manualValidationErrorType>
+    <ssm:EnumType package="eurocontrol.cfmu.cua.b2b.airspace" name="EAUPChainRetrievalRequestValidationError"/>
+  </manualValidationErrorType>
+  <validations>
+    <ssm:Validation name="INVALID_CHAIN_DATE">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Valid chain dates are:
+              <docbook:orderedlist><docbook:listitem><para>D-1 (pre-tactical, tomorrow)</para></docbook:listitem><docbook:listitem><para>D (tactical, today)</para></docbook:listitem><docbook:listitem><para>[ D + 1 (yesterday), D +15 months ] (post-ops) </para></docbook:listitem></docbook:orderedlist>
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="chainDate"/>
+      </attributes>
+    </ssm:Validation>
+  </validations>
+  <specialises>
+    <ssm:ClassType name="Request" package="eurocontrol.cfmu.cua.b2b.common"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="chainDate">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The date of the requested EAUP chain.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DateYearMonthDay" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

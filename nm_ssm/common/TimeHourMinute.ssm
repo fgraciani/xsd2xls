@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="TimeHourMinute" package="eurocontrol.cfmu.cua.b2b.common">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">String representation of a UTC time in a day, limited to the minute precision.</para>
+          <para xmlns="http://docbook.org/ns/docbook">Its format is "<code>hh:mm</code>".</para>
+          <para xmlns="http://docbook.org/ns/docbook">Possible values of <code>hh</code> are 2-digit numeric in [00, ..., 23].</para>
+          <para xmlns="http://docbook.org/ns/docbook">Possible values of <code>mm</code> are 2-digit numeric in [00, ..., 59].</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <type>
+    <ssm:StringType rule="DIGIT{2}:DIGIT{2}"/>
+  </type>
+</ssm:Typedef>

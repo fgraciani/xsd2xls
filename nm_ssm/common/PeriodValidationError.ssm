@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="PeriodValidationError" package="eurocontrol.cfmu.cua.b2b.common">
+  <annotations>
+    <ssm:Annotation name="ignore"/>
+  </annotations>
+  <enumerators>
+    <ssm:Enumerator name="INVALID_PERIOD"/>
+  </enumerators>
+</ssm:Enum>

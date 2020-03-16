@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="CompleteAIXMDatasetReply" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="CompleteAIXMDatasetReply" value="show_associations"/>
+            <ssm:AnnotationEntry key="CompleteAIXMDatasetReplyData" value="show_associations"/>
+            <ssm:AnnotationEntry key="CompleteDatasetSummary" value="show_content"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>
+            Reply returned in response to <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.CompleteAIXMDatasetRequest">CompleteAIXMDatasetRequest</link>
+          </docbook:para>
+          <docbook:para>
+            The service returns a list of datasets available for downloads. More precisely it returns a list of CompleteDatasetSummary objects. Each summary contains relevant information about the dataset.
+          </docbook:para>
+          <docbook:para>
+            A Complete AIXM Dataset is a set of AIXM files, one per AIXM feature type.
+          </docbook:para>
+          <docbook:para>
+            <note>
+              <itemizedlist mark="opencircle">
+                <listitem>
+                  <para>
+                    These services do not return the content of each file,
+                    but only the file identifiers. Each file must then be downloaded separately
+                    (see document
+                    <link href="refman://Essentials" source="Airspace">Essentials Reference Manual - Access to Files</link>
+                    for a detailed description).
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </note>
+          </docbook:para>
+          <docbook:para>
+            When querying the datasets for a given AIRAC, the service returns all the Complete AIXM Datasets published for that AIRAC: this means from six days before the AIRAC switch until the end of the cycle.
+          </docbook:para>
+          <docbook:para>
+            Past timeslices which are no longer relevant to the correspondent AIRACS are not included in the dataset.
+          </docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <specialises>
+    <ssm:ClassType name="Reply" package="eurocontrol.cfmu.cua.b2b.common"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="data" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The CompleteAIXMDatasetReply data</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="CompleteAIXMDatasetReplyData" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

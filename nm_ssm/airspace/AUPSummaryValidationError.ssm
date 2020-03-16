@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AUPSummaryValidationError" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <annotations>
+    <ssm:Annotation name="ignore"/>
+  </annotations>
+  <enumerators>
+    <!-- only in B2B_AUP_CREATION, B2B_AUP_UPDATE contexts -->
+    <ssm:Enumerator name="DRAFT_STATUS_NOT_ALLOWED_FOR_NIL_AUP"/>
+    <ssm:Enumerator name="RELEASED_STATUS_NOT_ALLOWED_IN_WRITE_MODE"/>
+    <ssm:Enumerator name="ORIGINATING_AUP_ID_MUST_BE_NULL_IF_AUP_WRITE"/>
+    <ssm:Enumerator name="ORIGINATING_AUP_ID_CANNOT_BE_NULL_IF_UUP_WRITE"/>
+    <ssm:Enumerator name="INVALID_REMARK"/>
+  </enumerators>
+</ssm:Enum>

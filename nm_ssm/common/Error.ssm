@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="Error" package="eurocontrol.cfmu.cua.b2b.common">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="Error" value="show_associations"/>
+            <ssm:AnnotationEntry key="ServiceGroup" value="show_content"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Description of a NOP/B2B error &#8212; see <link href="refman://Essentials.ErrorAndWarningReporting">Essentials - Error And Warning Reporting</link>.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="attributes" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Set of attributes to which this <code>Error</code> applies.</docbook:para>
+              <docbook:para>Can be empty for errors that do not apply to attributes, like SLA errors.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:SetType>
+          <itemType>
+            <ssm:StringType/>
+          </itemType>
+        </ssm:SetType>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="group">
+      <type>
+        <ssm:EnumType name="ServiceGroup" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="category">
+      <type>
+        <ssm:StringType rule="(ALPHA|_){1,100}"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="type">
+      <type>
+        <ssm:StringType rule="(ALPHA|DIGIT|_){1,100}"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="parameters" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Name/value pairs providing contextual information on the error.</docbook:para>
+              <docbook:para>Each key and value in the map can contain maximum 1000 printable characters.</docbook:para>
+              <docbook:para>Empty if the <code>ErrorType</code> of <code>type</code> does not define parameters, otherwise contains all keys defined for the <code>ErrorType</code> of <code>type</code>.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:MapType>
+          <keyType>
+            <ssm:StringType maxLength="1000" maxLengthInclusive="true"/>
+          </keyType>
+          <valueType>
+            <ssm:StringType maxLength="1000" maxLengthInclusive="true"/>
+          </valueType>
+        </ssm:MapType>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="message" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Error message if any &#8212; the error message is not part of the B2B contract, i.e. the error message may or may not be provided, and its content may change at any time.</docbook:para>
+              <docbook:para>The message may contain substitution variables if the <code>ErrorType</code> of <code>type</code> has parameters. Such a substitution variable is indicated as "<code>{{&lt;parameter_key&gt;}}</code>", e.g. if a parameter <code>START_POINT</code> is defined for the <code>ErrorType</code> of <code>type</code> and if a <code>message</code> contains it, it is indicated in <code>message</code> as "<code>{{START_POINT}}</code>". Note that an <code>Error</code> may contain <code>parameters</code> that are not used in <code>message</code>.</docbook:para>
+              <docbook:para>Maximum 1000 printable characters.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:StringType maxLength="1000" maxLengthInclusive="true"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

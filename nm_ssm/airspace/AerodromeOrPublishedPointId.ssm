@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Union xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AerodromeOrPublishedPointId" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Represents an aerodrome or a published point ICAO identifier.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <choices>
+    <ssm:Choice discriminant="aerodrome">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The aerodrome ICAO identifier.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="AerodromeICAOId" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Choice>
+    <ssm:Choice discriminant="point">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The published point ICAO identifier.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="PublishedPointId" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Choice>
+  </choices>
+  <discriminator>
+    <ssm:EnumType name="AerodromeOrPublishedPointIdType" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+  </discriminator>
+</ssm:Union>

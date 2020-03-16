@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="DurationHourMinuteSecond" package="eurocontrol.cfmu.cua.b2b.common">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">String representation of a duration (with minute precision).</para>
+          <para xmlns="http://docbook.org/ns/docbook">Its format is "<code>hhmmss</code>" (note the absence of "<code>:</code>" (colon) character &#8212; as this is not a time in day). Example: "<code>085032</code>" (duration of 8 hours 50 minutes 32 seconds).</para>
+          <para xmlns="http://docbook.org/ns/docbook">Possible values of <code>hh</code> are 2-digit numeric in [00, .., 99].</para>
+          <para xmlns="http://docbook.org/ns/docbook">Possible values of <code>mm</code> are 2-digit numeric in [00, ..., 59].</para>
+          <para xmlns="http://docbook.org/ns/docbook">Possible values of <code>ss</code> are 2-digit numeric in [00, ..., 59].</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <type>
+    <ssm:StringType rule="DIGIT{6}"/>
+  </type>
+</ssm:Typedef>

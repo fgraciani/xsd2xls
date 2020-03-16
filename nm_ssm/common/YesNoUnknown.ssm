@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="YesNoUnknown" package="eurocontrol.cfmu.cua.b2b.common">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">Convenience type used in situations where NM needs to express a choice between "yes", "no" and "NM does not know".</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <enumerators>
+    <ssm:Enumerator name="YES"/>
+    <ssm:Enumerator name="NO"/>
+    <ssm:Enumerator name="UNKNOWN"/>
+  </enumerators>
+</ssm:Enum>

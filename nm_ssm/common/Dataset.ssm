@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="Dataset" package="eurocontrol.cfmu.cua.b2b.common" usesManualValidation="true">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>The type of this dataset. See <link href="refman://Flight.PortTypesAndDataTypes.ForecastAndOperationalDatasets">Forecast and Operational Datasets</link>, <link href="refman://Flight.PortTypesAndDataTypes.ProposalFlights">Proposal Flights</link>, and <link href="refman://Flow.PortTypesAndDataTypes.SimulationDatasets">Simulation DataSets</link>.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <manualValidationErrorType>
+    <ssm:EnumType package="eurocontrol.cfmu.cua.b2b.common" name="DatasetValidationError"/>
+  </manualValidationErrorType>
+  <validations>
+    <ssm:Validation name="INVALID_SIMULATION_IDENTIFIER">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The <code>simulationIdentifier</code> needs to be set to null if the <code>datasetType</code> is set to <code>FORECAST</code> or <code>OPERATIONAL</code> and not null if the <code>datasetType</code> is set to <code>SIMULATION</code></docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="simulationIdentifier"/>
+      </attributes>
+    </ssm:Validation>
+  </validations>
+  <attributes>
+    <ssm:Attribute name="type">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The type of this dataset.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:EnumType name="DatasetType" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="simulationIdentifier" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>In case the dataset type is <code>SIMULATION</code>, the identifier of the simulation.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="SimulationIdentifier" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

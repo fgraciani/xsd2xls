@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Union xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="Aerodrome" package="eurocontrol.cfmu.cua.b2b.flight">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Describes an aerodrome in the flight plan context.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <choices>
+    <ssm:Choice discriminant="icaoId">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The ICAO id of this aerodrome.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="AerodromeICAOId" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Choice>
+    <ssm:Choice discriminant="otherDesignation">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Name and location of the aerodrome if the ICAO id is not provided for this aerodrome. ICAO DEP/ or DEST/</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="OtherAerodromeDesignation" package="eurocontrol.cfmu.cua.b2b.flight"/>
+      </type>
+    </ssm:Choice>
+  </choices>
+  <discriminator>
+    <ssm:EnumType name="DesignatorType" package="eurocontrol.cfmu.cua.b2b.flight"/>
+  </discriminator>
+</ssm:Union>

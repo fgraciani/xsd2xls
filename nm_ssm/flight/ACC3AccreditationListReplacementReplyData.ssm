@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="ACC3AccreditationListReplacementReplyData" package="eurocontrol.cfmu.cua.b2b.flight" abstract="false">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>The ACC3 accreditation list replacement reply data.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+</ssm:Class>

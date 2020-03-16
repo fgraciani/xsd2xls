@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="NMB2BVersion" package="eurocontrol.cfmu.cua.b2b.common" usesManualValidation="true">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>It corresponds to the version of the Web Services supported by the NM B2B provider agent.</docbook:para>
+          <docbook:para>
+            The NM B2B provider agent can support several NM B2B versions.
+            The NM B2B version is supported during two years after its deployment.
+          </docbook:para>
+          <docbook:para>
+            The NM B2B version identifier of any service artefact is the version identifier of its NM release,
+            namely 19.0.0, 19.5.0, and so forth.
+          </docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <manualValidationErrorType>
+    <ssm:EnumType package="eurocontrol.cfmu.cua.b2b.common" name="NMB2BVersionValidationError"/>
+  </manualValidationErrorType>
+  <validations>
+    <ssm:Validation name="NMB2B_VERSION_MUST_BE_SUPPORTED">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The NM B2B version must be supported by the NM B2B producer.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Validation>
+  </validations>
+  <type>
+    <ssm:StringType rule="DIGIT{2}.DIGIT{1}.DIGIT{1}"/>
+  </type>
+</ssm:Typedef>

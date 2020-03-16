@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="ExecutionEnvironment" package="eurocontrol.cfmu.cua.b2b.common">
+  <annotations>
+    <ssm:Annotation name="xsd-strict"/>
+  </annotations>
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>
+            Defines the execution environment where the NM B2B provider agent is running.
+          </docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <enumerators>
+    <ssm:Enumerator name="OPS">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>
+                Operational platform.
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+    <ssm:Enumerator name="OPT">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>
+                Operational test platform.
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+    <ssm:Enumerator name="PRE_RELEASE">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>
+                Test platform.
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+    <ssm:Enumerator name="DEV">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>
+                Development platform.
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+  </enumerators>
+</ssm:Enum>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AUPState" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">Enumerates the possible states of an AUP.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <enumerators>
+    <ssm:Enumerator name="DRAFT">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">After initial upload and successful validation the AUP is in status DRAFT.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+    <ssm:Enumerator name="READY">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">Once the AUP is in DRAFT status operational coordination between adjacent AMCs and FMPs takes place. Once the coordination is completed the AUP is promoted to READY status by the AMC.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+    <ssm:Enumerator name="RELEASED">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">AUPs in READY are promoted to "RELEASED" by the CADF after the CADF himself has validated the AUPs for completeness and non-contradiction.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+  </enumerators>
+</ssm:Enum>

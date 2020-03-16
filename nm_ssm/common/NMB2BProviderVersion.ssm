@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="NMB2BProviderVersion" package="eurocontrol.cfmu.cua.b2b.common">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>The unique identifier of the software running the NM B2B provider agent.</docbook:para>
+          <docbook:para><emphasis role="underline">Example</emphasis>: 19.5.0.4.76 or FB599_19_5_0.34</docbook:para>
+          <docbook:note>
+            <docbook:para>
+              When the value of <code>NMB2BProviderVersion</code> has a prefix alphanumeric (FB599 or NMVP,...),
+              it means that the NMB2BProvider is hosting an NM release corresponding to an exercise.
+              This is typically the case when using the NMVP platform.
+            </docbook:para>
+          </docbook:note>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <type>
+    <ssm:StringType/>
+  </type>
+</ssm:Typedef>

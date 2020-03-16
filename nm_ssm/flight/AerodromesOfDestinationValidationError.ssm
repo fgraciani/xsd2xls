@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AerodromesOfDestinationValidationError" package="eurocontrol.cfmu.cua.b2b.flight">
+  <annotations>
+    <ssm:Annotation name="ignore"/>
+  </annotations>
+  <enumerators>
+    <ssm:Enumerator name="ALTERNATE2_MUST_BE_NULL_IF_ALTERNATE1_IS_NULL"/>
+  </enumerators>
+</ssm:Enum>

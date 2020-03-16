@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="AbstractEAUPCDRRequest" package="eurocontrol.cfmu.cua.b2b.airspace" abstract="true" usesManualValidation="true">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="AbstractEAUPCDRRequest" value="show_associations+show_sub_classes"/>
+            <ssm:AnnotationEntry key="DateTimeMinutePeriod" value="hide"/>
+            <ssm:AnnotationEntry key="FlightLevelRange" value="hide"/>
+            <ssm:AnnotationEntry key="IRFilter" value="show_associations"/>
+            <ssm:AnnotationEntry key="IRUUIDFilter" value="show_content"/>
+            <ssm:AnnotationEntry key="IRDesignatorFilter" value="show_content"/>
+            <ssm:AnnotationEntry key="EAUPIdentification" value="show_content"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Used to retrieve the CDR openings and closures within an EAUP, or between EAUPs, while possibly applying a filter on the returned result set, i.e. keep only the CDR openings/closures for:</docbook:para>
+          <docbook:orderedlist>
+            <docbook:listitem>
+              <para>A CDR type (i.e. opening and/or closure), and</para>
+            </docbook:listitem>
+            <docbook:listitem>
+              <para>A list of route wildcards, and</para>
+            </docbook:listitem>
+            <docbook:listitem>
+              <para>A list of FIR and/or UIR UUIDs, and</para>
+            </docbook:listitem>
+            <docbook:listitem>
+              <para>A list of FIR and/or UIR designator wildcards, and</para>
+            </docbook:listitem>
+            <docbook:listitem>
+              <para>A flight level range, and</para>
+            </docbook:listitem>
+            <docbook:listitem>
+              <para>An applicability period</para>
+            </docbook:listitem>
+          </docbook:orderedlist>
+          <docbook:para>The logical AND operator applies between all the query attributes described below.</docbook:para>
+          <docbook:para>Since released EAUPs are immutable, i.e. their contents will not be modified anymore, NM requires its customers to undertake their best effort to avoid repeatedly launching the same requests on the same EAUP.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <manualValidationErrorType>
+    <ssm:EnumType package="eurocontrol.cfmu.cua.b2b.airspace" name="AbstractEAUPCDRRequestValidationError"/>
+  </manualValidationErrorType>
+  <validations>
+    <ssm:Validation name="ROUTE_UUIDS_CANNOT_CONTAIN_DUPLICATE">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>If specified, the array cannot be empty and does not accept duplicates.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="routeUUIDs"/>
+      </attributes>
+    </ssm:Validation>
+    <ssm:Validation name="ROUTE_DESIGNATORS_CANNOT_CONTAIN_DUPLICATE">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Query attribute on route designators.
+              Each string item in the array can be a full route designator or a wildcard for a route designator. Supported wildcards are limited to at least one character and the star sign ("*") at the end of the expression. The default meaning is "all routes".</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="routeDesignators"/>
+      </attributes>
+    </ssm:Validation>
+  </validations>
+  <specialises>
+    <ssm:ClassType name="Request" package="eurocontrol.cfmu.cua.b2b.common"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="cdrOpenings" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>If true, CDR openings are returned. True by default.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:BooleanType/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="cdrClosures" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>If true, CDR closures are returned. True by default.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:BooleanType/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="routeUUIDs" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Query attribute on route UUIDs. The default meaning is "all route UUIDs".</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType minSize="1">
+          <itemType>
+            <ssm:TypedefType name="UUID" package="eurocontrol.cfmu.cua.b2b.common"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="routeDesignators" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Query attribute on route designators.
+              Each string item in the array can be a full route designator or a wildcard for a route designator. Supported wildcards are limited to at least one character and the star sign ("*") at the end of the expression. The default meaning is "all routes".</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType minSize="1">
+          <itemType>
+            <ssm:StringType rule="(UALPHA|DIGIT){1,7}|(UALPHA|DIGIT){1,6}*"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="irFilter" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Used to filter the IR airspaces on which CDR openings/closures apply, based on UUIDs or on IR designators.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:UnionType name="IRFilter" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="flightLevelRange" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Query attribute on flight level range. The CDR opening/closure matches this query attribute if its flight level range and the given flight level range overlap. Be aware that the FlightLevelRange is right-opened, i.e. if e.g. a CDR opening flight level range is [ 300, 400 [ and the caller queries on flight level range [ 400, 500 [, the CDR opening does not match the query. The default meaning is "any flight level range".</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="FlightLevelRange" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="applicability" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Query attribute on CDR opening/closure applicability period. The CDR opening/closure matches this query attribute if its applicability period and the given applicability period overlap. Note that time period are left-closed and right-opened, i.e. no match if obtained if the CDR opening/closure applicability period starts at the time corresponding to the end of the query attribute. The default meaning is "any applicability".</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="DateTimeMinutePeriod" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

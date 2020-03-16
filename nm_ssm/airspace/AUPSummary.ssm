@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AUPSummary" package="eurocontrol.cfmu.cua.b2b.airspace" usesManualValidation="true">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Represents an AUP summary, i.e. all its associated data apart from its main contents (CDR openings/closures and RSA allocations).</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <manualValidationErrorType>
+    <ssm:EnumType package="eurocontrol.cfmu.cua.b2b.airspace" name="AUPSummaryValidationError"/>
+  </manualValidationErrorType>
+  <validations>
+    <ssm:Validation name="ORIGINATING_AUP_ID_MUST_BE_NULL_IF_AUP_WRITE">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Must be null when it is an AUP.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="originatingAupId"/>
+      </attributes>
+      <validationContexts>
+        <ssm:ValidationContextRef name="B2B_AUP_CREATION"/>
+        <ssm:ValidationContextRef name="B2B_AUP_UPDATE"/>
+      </validationContexts>
+    </ssm:Validation>
+    <ssm:Validation name="ORIGINATING_AUP_ID_CANNOT_BE_NULL_IF_UUP_WRITE">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Cannot be null when it is an UUP.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="originatingAupId"/>
+      </attributes>
+      <validationContexts>
+        <ssm:ValidationContextRef name="B2B_AUP_CREATION"/>
+        <ssm:ValidationContextRef name="B2B_AUP_UPDATE"/>
+      </validationContexts>
+    </ssm:Validation>
+    <ssm:Validation name="RELEASED_STATUS_NOT_ALLOWED_IN_WRITE_MODE">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Must be either DRAFT or READY in all write services -- can be DRAFT, READY or RELEASED in read-only services.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="aupState"/>
+      </attributes>
+      <validationContexts>
+        <ssm:ValidationContextRef name="B2B_AUP_CREATION"/>
+        <ssm:ValidationContextRef name="B2B_AUP_UPDATE"/>
+      </validationContexts>
+    </ssm:Validation>
+    <ssm:Validation name="DRAFT_STATUS_NOT_ALLOWED_FOR_NIL_AUP">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>DRAFT status is not allowed for a nil AUP.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="aupState"/>
+      </attributes>
+      <validationContexts>
+        <ssm:ValidationContextRef name="B2B_AUP_CREATION"/>
+        <ssm:ValidationContextRef name="B2B_AUP_UPDATE"/>
+      </validationContexts>
+    </ssm:Validation>
+    <ssm:Validation name="INVALID_REMARK">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>According to the current CIAM/CHMI process, the AUP remark must start with the phrase "NIL AUP " or "NIL UUP " if nilAUP is true and cannot start with these phrases otherwise; the "AUP" or "UUP" bit must match the actual AUP type. In order to remove this constraint from the client applications, the NOP/B2B system prefixes the given remark value with the appropriate phrase (hence 8 characters) when nilAUP is true. As a consequence the character set is:
+              <docbook:orderedlist><docbook:listitem><para>(UALPHA|DIGIT|/| ){0,128} in output</para></docbook:listitem><docbook:listitem><para>(UALPHA|DIGIT|/| ){0,120} in input</para></docbook:listitem></docbook:orderedlist>
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="remark"/>
+      </attributes>
+      <validationContexts>
+        <ssm:ValidationContextRef name="B2B_AUP_CREATION"/>
+        <ssm:ValidationContextRef name="B2B_AUP_UPDATE"/>
+      </validationContexts>
+    </ssm:Validation>
+  </validations>
+  <attributes>
+    <ssm:Attribute name="id" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Unique id that the NM system associates to the AUP.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="AUPId" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="originatingAupId" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Unique id of the originating AUP.</docbook:para>
+              <docbook:para>It must be the value of the use plan this UUP is based on.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="AUPId" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="chainDate">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The chain date of the chain to which this AUP belongs. Mandatory.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DateYearMonthDay" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="amcId" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The ANU id of the AMC to which this AUP belongs. Associated to the AUP at creation time by the NM system. Must be equal to the caller's ANU id in any service that modifies an existing AUP.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="AirNavigationUnitId" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="aupType">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Specifies if this AUP is a BASELINE (AUP) or an UPDATE (UUP). Redundant, used to check that the client and server share the same understanding of what the object represents, especially at creation time.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:EnumType name="AUPType" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="validityPeriod">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The period in which this AUP is valid. When saving an AUP of type AUPType.BASELINE, must be [ 06:00, 06:00 [; when saving an AUP of type AUPType.UPDATE, must be [ S, 06:00 [ where S is posterior or equal to the start time of the validity period of the predecessor.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="DateTimeMinutePeriod" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="releaseTime" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The time at which the AUP was released.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DateTimeMinute" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="aupState">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Current state of this AUP.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:EnumType name="AUPState" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="nilAUP">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Indicates whether this AUP is nil or not.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:BooleanType/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="remark">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Short remark associated to the AUP.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:StringType rule="ANY{0,128}"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="note">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Additional information on the AUP.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType maxSize="25" maxSizeInclusive="true" minSize="0">
+          <itemType>
+            <ssm:StringType rule="ANY{0,255}"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="expandedAUP">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Indicates whether the AUP contains implicit CDRs as a result of the AMC running the expansion via CHMI. Attention: the value of this attribute is not affected by the B2B - AUP expand service. Mandatory -- ignored in all input AUPs.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:BooleanType/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="lastUpdate" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Last update information -- set by system.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="LastUpdate" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+	<ssm:Attribute name="isP3" optional="true" added="23.5.0">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Indicates alert for P3 requests.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:BooleanType wrapper="true"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

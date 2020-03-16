@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="AUPServiceConfigurationRequest" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="AUPServiceConfigurationRequest" value="show_associations"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">Request to obtain the dynamic part of the AUP service configuration.</para>
+          <para xmlns="http://docbook.org/ns/docbook">Can be performed at any time (provided the service is available).</para>
+          <para xmlns="http://docbook.org/ns/docbook">The AUP service configuration data is provided a long time prior to its applicability, hence NM requires the client applications not to retrieve it with high frequency, certainly not more than once every 10 minutes.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <specialises>
+    <ssm:ClassType name="Request" package="eurocontrol.cfmu.cua.b2b.common"/>
+  </specialises>
+  <attributes/>
+</ssm:Class>

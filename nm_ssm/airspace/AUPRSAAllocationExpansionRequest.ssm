@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="AUPRSAAllocationExpansionRequest" package="eurocontrol.cfmu.cua.b2b.airspace" usesManualValidation="true">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="AUPRSAAllocationExpansionRequest" value="show_associations"/>
+            <ssm:AnnotationEntry key="DateTimeMinutePeriod" value="hide"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Request to obtain the following expansion.</docbook:para>
+          <docbook:para>Can be performed at any time (provided the service is available).</docbook:para>
+          <docbook:para>The expansion algorithm or simply "expansion" computes a list of CDR opening/closures based on:</docbook:para>
+          <orderedlist xmlns="http://docbook.org/ns/docbook">
+            <docbook:listitem>
+              <para>A provided list of RSA allocations, and</para>
+            </docbook:listitem>
+            <docbook:listitem>
+              <para>The pre-defined RSA allocations as stored in NM, and</para>
+            </docbook:listitem>
+            <docbook:listitem>
+              <para>The pre-defined relationships between RSA and CDRs (is-nearby, is-not-affected, etc) as stored in NM</para>
+            </docbook:listitem>
+            <docbook:listitem>
+              <para>A period for which the calculation on the affected routes will done</para>
+            </docbook:listitem>
+          </orderedlist>
+          <docbook:para>The output list of CDR openings/closures is labelled implicit to distinguish it from CDR openings and closures managed by the customer.</docbook:para>
+          <docbook:para>This request does not imply any update transaction within the NM system.</docbook:para>
+          <docbook:para>It is up to the client to extract from the returned CDR updates those of interest to him, and include those in the AUP to be created/updated.</docbook:para>
+          <docbook:para>Remark: CHMI users can select the computed CDR updates of interest while creating an AUP. This results in the automatic inclusion of the implicitCDRs CDR updates in the AUP upon saving. The implicitCDRs list of CDR updates is readable by B2B users per AUP. However, B2B users will never generate an AUP with a separate list of implicitCDRs, i.e. all CDR updates in an AUP from a B2B user are always considered explicit.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <manualValidationErrorType>
+    <ssm:EnumType package="eurocontrol.cfmu.cua.b2b.airspace" name="AUPRSAAllocationExpansionRequestValidationError"/>
+  </manualValidationErrorType>
+  <validations>
+    <ssm:Validation name="INVALID_EXPANSION_PERIOD">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Period must be greater or equal to 1 second.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="expansionPeriod"/>
+      </attributes>
+    </ssm:Validation>
+  </validations>
+  <specialises>
+    <ssm:ClassType name="Request" package="eurocontrol.cfmu.cua.b2b.common"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="rsaAllocations" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>List of explicit RSA allocations input to the expansion algorithm.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="ADRMessageType" package="eurocontrol.cfmu.cua.b2b.aixm"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="expansionPeriod">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Period of time input to the expansion algorithm.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="DateTimeMinutePeriod" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

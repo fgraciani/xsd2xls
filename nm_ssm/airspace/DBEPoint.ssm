@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="DBEPoint" package="eurocontrol.cfmu.cua.b2b.airspace" usesManualValidation="true">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">Represents a non-published dbe point.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <manualValidationErrorType>
+    <ssm:EnumType package="eurocontrol.cfmu.cua.b2b.airspace" name="DBEPointValidationError"/>
+  </manualValidationErrorType>
+  <validations>
+    <ssm:Validation name="UNSUPPORTED_POINT_TYPE">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The<code>DBEPoint</code> is supported only in <code>FLIGHT_LIST_REPLY</code> context.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="dbePointId"/>
+      </attributes>
+      <validationContexts>
+        <ssm:ValidationContextRef name="FLIGHT_LIST_REPLY"/>
+      </validationContexts>
+    </ssm:Validation>
+  </validations>
+  <specialises>
+    <ssm:ClassType name="NonPublishedPoint" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="dbePointId">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">DBE point identifier.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DBEPointId" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

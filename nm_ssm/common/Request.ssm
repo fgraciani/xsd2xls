@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="Request" package="eurocontrol.cfmu.cua.b2b.common" abstract="true">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="Request" value="show_content"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">Abstract ancestor of all NOP/B2B requests.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="endUserId" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">The id of the end user of the client application, hence typically <emphasis>not</emphasis> the id of the certificate owner. Subsequently used to build usage statistics.</para>
+              <para xmlns="http://docbook.org/ns/docbook">It is recommended to pass it.</para>
+              <para xmlns="http://docbook.org/ns/docbook">Length must be in [0,30]. Alphabetic, numeric and underscore characters only.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:StringType rule="(ALPHA|DIGIT|_){0,30}"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="sendTime">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">UTC time at which the client application has sent the request.</para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DateTimeSecond" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

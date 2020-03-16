@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="Timestamp" package="eurocontrol.cfmu.cua.b2b.common" usesManualValidation="true">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>String representation of a timestamp (Gregorian Calendar - UTC).</docbook:para>
+          <docbook:para>Its format is "<code>YYYY-MM-DD hh:mm:ss SSS</code>". Example: "2013-12-01 11:37:25 245".</docbook:para>
+          <docbook:para>Possible values of <code>YYYY</code>, <code>MM</code> and <code>DD</code> in "<code>YYYY-MM-DD hh:mm:ss</code>" are defined in <code><link href="ssm://eurocontrol.cfmu.cua.b2b.common.DateYearMonthDay">DateYearMonthDay</link></code>. <code>SSS</code> represents milliseconds.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <manualValidationErrorType>
+    <ssm:EnumType package="eurocontrol.cfmu.cua.b2b.common" name="TimestampValidationError"/>
+  </manualValidationErrorType>
+  <type>
+    <ssm:StringType rule="DIGIT{4}-DIGIT{2}-DIGIT{2} DIGIT{2}:DIGIT{2}:DIGIT{2} DIGIT{3}"/>
+  </type>
+</ssm:Typedef>

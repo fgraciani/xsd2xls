@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Union xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="CompleteDatasetQueryCriteria" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>The criteria by which to query for Complete AIXM Datasets.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <choices>
+    <ssm:Choice discriminant="airac">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Specific AIRAC (AIRAC id or AIRAC sequence number) for which datasets are requested. Only datasets related to the specified AIRAC are returned. Normally the data effective at a particular AIRAC is made available by NM 6 days before the AIRAC switch, so a query for all datasets of a given AIRAC may return from 0 to 34 datasets (28 days of AIRAC + 6 days in advance).</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:UnionType name="AiracIdentifier" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Choice>
+    <ssm:Choice discriminant="date">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Allows querying for datasets based on their publication date.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DateYearMonthDay" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Choice>
+    <ssm:Choice discriminant="publicationPeriod">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Allows querying for datasets based on their publication date: only datasets published within the given period will be returned.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="DateYearMonthDayPeriod" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Choice>
+  </choices>
+  <discriminator>
+    <ssm:EnumType name="CompleteDatasetQueryCriteriaDiscriminant" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+  </discriminator>
+</ssm:Union>

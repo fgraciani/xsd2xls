@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="EAUPChain" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="EAUPChain" value="show_associations"/>
+            <ssm:AnnotationEntry key="EAUPSummary" value="show_associations"/>
+            <ssm:AnnotationEntry key="DateTimeMinutePeriod" value="show_associations"/>
+            <ssm:AnnotationEntry key="EAUPIdentification" value="show_associations"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">Represents an EAUP chain, i.e. the EAUP baseline of a day and its subsequent versions in the day.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="chainDate">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">The date of the EAUP chain. Valid chain dates are:</para>
+              <orderedlist xmlns="http://docbook.org/ns/docbook">
+                <listitem>
+                  <para>D-1 (pre-tactical, tomorrow)</para>
+                </listitem>
+                <listitem>
+                  <para>D (tactical, today)</para>
+                </listitem>
+                <listitem>
+                  <para>[ D+1 (yesterday), D+15 months ] (post-ops)</para>
+                </listitem>
+              </orderedlist>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DateYearMonthDay" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="eaups">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <para xmlns="http://docbook.org/ns/docbook">The ordered list of EAUP summaries in the chain. The list is ordered according to the sequence of versions: the first summary in the list is the baseline EAUP, the second one is the first update version after the baseline EAUP, and so forth. This ordering is recalled in the EAUPIdentification through a sequence number. The array can be empty.</para>
+              <docbook:para><emphasis role="underline">REMARK</emphasis>: 
+                We return OBJECT_NOT_FOUND if the EAUPChain has never been created in the NM system, 
+                being for the EAUPChain of today, or in 3 months. Note that the situation is slightly different for a "past" 
+                EAUPChain: it is immutable (won't change anymore) so that if at the end of the day it contains no EAUP 
+                we know for sure that it is empty and the NM system creates it empty. We then return an EAUPChain 
+                with OK status and an empty EAUP/EUUP list.
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType>
+          <itemType>
+            <ssm:ClassType name="EAUPSummary" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

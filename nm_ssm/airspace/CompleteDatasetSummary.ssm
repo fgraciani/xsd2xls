@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="CompleteDatasetSummary" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Describes a Complete AIXM Dataset.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="updateId">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The id of the latest update included in the data set. This updateId is the key to be used to query for subsequent updates (Incremental AIXM Datasets).</docbook:para>
+              <docbook:para>Remark: This key is not supposed to be manipulated by the consumer. It is a kind of opaque key exchanged between the consumer and the provider.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="AirspaceDataUpdateId" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="publicationDate">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The date in which the dataset was made available by NM.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DateYearMonthDay" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="sourceAIRACs">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>This is an array of either 1 or 2 elements that contains the identifiers of the AIRAC cycles potentially affected by the data set.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType minSize="1" maxSize="2" maxSizeInclusive="true">
+          <itemType>
+            <ssm:UnionType name="AiracIdentifier" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="files">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The list of AIXM file ids that compose the dataset.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType>
+          <itemType>
+            <ssm:ClassType name="AIXMFile" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

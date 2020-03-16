@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="WeeklyScheduleItem" package="eurocontrol.cfmu.cua.b2b.common">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="WeeklyScheduleItem" value="show_associations"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para/>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="globalPeriod">
+      <type>
+        <ssm:ClassType name="DateTimeMinutePeriodWithUFN" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="weekDaySet">
+      <type>
+        <ssm:SetType>
+          <itemType>
+            <ssm:EnumType name="WeekDay" package="eurocontrol.cfmu.cua.b2b.common"/>
+          </itemType>
+        </ssm:SetType>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="dailyPeriod">
+      <type>
+        <ssm:ClassType name="TimeHourMinutePeriod" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

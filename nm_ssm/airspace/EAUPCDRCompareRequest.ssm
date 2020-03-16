@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="EAUPCDRCompareRequest" package="eurocontrol.cfmu.cua.b2b.airspace" usesManualValidation="true">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="EAUPCDRCompareRequest" value="show_associations"/>
+            <ssm:AnnotationEntry key="AbstractEAUPCDRRequest" value="show_content"/>
+            <ssm:AnnotationEntry key="EAUPIdentification" value="show_content"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Used to retrieve the CDR openings and closures that the two given EAUPs have in common, and those that are in one of these EAUPs only, while possibly applying a filter on the returned result set, as described in <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.AbstractEAUPCDRRequest">AbstractEAUPCDRRequest</link>.</docbook:para>
+          <docbook:para>The queried EAUPs are identified using the <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.EAUPIdentification">EAUPIdentification</link> from the <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.EAUPSummary">EAUPSummary</link> returned as part of an <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.EAUPChain">EAUPChain</link>.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <manualValidationErrorType>
+    <ssm:EnumType package="eurocontrol.cfmu.cua.b2b.airspace" name="EAUPCompareRequestValidationError"/>
+  </manualValidationErrorType>
+  <validations>
+    <ssm:Validation name="EAUP_IDS_CANNOT_BE_THE_SAME">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para><code>eaupId1</code> and <code>eaupId2</code> cannot be the same.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="eaupId1"/>
+        <ssm:AttributeRef name="eaupId2"/>
+      </attributes>
+    </ssm:Validation>
+  </validations>
+  <specialises>
+    <ssm:ClassType name="AbstractEAUPCDRRequest" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="eaupId1">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The identification of the first EAUP, extracted (and left unchanged) from an <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.EAUPCDRRequest">EAUPSummary</link>.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="EAUPIdentification" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="eaupId2">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The identification of the second EAUP, extracted (and left unchanged) from an <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.EAUPCDRRequest">EAUPSummary</link>.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="EAUPIdentification" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

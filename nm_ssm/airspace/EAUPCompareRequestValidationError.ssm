@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="EAUPCompareRequestValidationError" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <annotations>
+    <ssm:Annotation name="ignore"/>
+  </annotations>
+  <enumerators>
+    <ssm:Enumerator name="EAUP_IDS_CANNOT_BE_THE_SAME"/>
+  </enumerators>
+</ssm:Enum>

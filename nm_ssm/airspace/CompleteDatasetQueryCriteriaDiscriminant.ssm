@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="CompleteDatasetQueryCriteriaDiscriminant" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <annotations>
+    <ssm:Annotation name="ignore"/>
+  </annotations>
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Discriminant of union <code>CompleteDatasetQueryCriteria</code>.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <enumerators>
+    <ssm:Enumerator name="airac"/>
+    <ssm:Enumerator name="date"/>
+    <ssm:Enumerator name="publicationPeriod"/>
+  </enumerators>
+</ssm:Enum>

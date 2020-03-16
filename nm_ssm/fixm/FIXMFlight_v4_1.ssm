@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="FIXMFlight_v4_1" package="eurocontrol.cfmu.cua.b2b.fixm" added="23.0.0">
+  <annotations>
+    <ssm:Annotation name="serviceGroup" value="flight"/>
+  </annotations>
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>FIXM flight.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <type>
+    <ssm:FreeType name="aero.fixm.v4_1_0.flight.FlightType"/>
+  </type>
+</ssm:Typedef>

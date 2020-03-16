@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="Reply" package="eurocontrol.cfmu.cua.b2b.common" abstract="true">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="Reply" value="show_associations"/>
+            <ssm:AnnotationEntry key="ReplyStatus" value="show_content"/>
+            <ssm:AnnotationEntry key="Error" value="show_content"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Abstract ancestor of all NOP/B2B replies.</docbook:para>
+          <docbook:para>No XML reply is sent if the request is such that the system returned an HTTP error instead &#8212; see <link href="refman://Essentials.ErrorAndWarningReporting">Essentials - Error And Warning Reporting</link>.</docbook:para>
+          <docbook:para>Otherwise, the corresponding concrete reply type message is returned.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="requestReceptionTime" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>UTC time at which the request was received at NM.</docbook:para>
+              <docbook:para>Always set when an XML reply is returned, regardless of the possible exceptions that occurred within the request processing.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DateTimeSecond" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="requestId" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Identification of the request. This id is not unique across time: the request is uniquely identified via two attributes: <code>requestReceptionTime</code> and <code>requestId</code>.</docbook:para>
+              <docbook:para>Always set when an XML reply is returned, regardless of the possible exceptions that occurred within the request processing.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:StringType/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="sendTime" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>UTC time at which NM has sent the reply.</docbook:para>
+              <docbook:para>Always set when an XML reply is returned, regardless of the possible exceptions that occurred within the request processing.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="DateTimeSecond" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="status">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Specifies if the request was successfully processed (value is <code>ReplyStatus.OK</code>) or not (value is not <code>ReplyStatus.OK</code>).</docbook:para>
+              <docbook:para>Always set when an XML reply is returned, regardless of the possible exceptions that occurred within the request processing.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:EnumType name="ReplyStatus" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="inputValidationErrors" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Contains the input validation errors, if any.</docbook:para>
+              <docbook:para>Set to null if the request successfully passed input validations (i.e. <code>status</code> is not set to <code>ReplyStatus.INVALID_INPUT</code>).</docbook:para>
+              <docbook:para>Input validation error types are described in <link href="refman://Essentials.ErrorAndWarningReporting">Essentials - Error And Warning Reporting</link>.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType maxSize="100" maxSizeInclusive="true">
+          <itemType>
+            <ssm:ClassType name="Error" package="eurocontrol.cfmu.cua.b2b.common"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="outputValidationErrors" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Contains the output validation errors, if any.</docbook:para>
+              <docbook:para>Set to null if the request successfully passed output validations (i.e. <code>status</code> is not set to <code>ReplyStatus.INVALID_OUTPUT</code>).</docbook:para>
+              <docbook:para>This is only used in test context.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType maxSize="100" maxSizeInclusive="true">
+          <itemType>
+            <ssm:ClassType name="Error" package="eurocontrol.cfmu.cua.b2b.common"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="warnings" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>See <link href="refman://Essentials.ErrorAndWarningReporting">Essentials - Error And Warning Reporting</link>.</docbook:para>
+              <docbook:para>Left null if there is no returned warning.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType maxSize="100" maxSizeInclusive="true">
+          <itemType>
+            <ssm:ClassType name="Error" package="eurocontrol.cfmu.cua.b2b.common"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="slaError" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Describes an error caused by a SLA violation.</docbook:para>
+              <docbook:para>Unused in current release: always null.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="Error" package="eurocontrol.cfmu.cua.b2b.common"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="reason" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>This attribute is used to provide a detailed explanation about the returned reply status when other than <code>ReplyStatus.OK</code>.</docbook:para>
+              <docbook:para>Optionally set when an XML reply is returned with reply status different than <code>ReplyStatus.OK</code>.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:StringType/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

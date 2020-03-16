@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AUPComputedEntries" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>AUP entries that are not manual, i.e. computed by the NM system based on default RSA availability (implicitRSAs) and/or based on the result of the expansion via CHMI.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="implicitCDRs" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The list of implicit CDR openings and closures of this AUP. Is available (not null) when an AMC has executed the expansion via CHMI.</docbook:para>
+              <docbook:para>
+                <emphasis role="underline">Presence:</emphasis>
+                <docbook:orderedlist>
+                  <docbook:listitem>
+                    <para>Must be null if <code>summary.expandedAUP</code> is false, or if <code>summary.nilAUP</code> is true.</para>
+                  </docbook:listitem>
+                  <docbook:listitem>
+                    <para>Cannot be null (but can be empty) otherwise.</para>
+                  </docbook:listitem>
+                </docbook:orderedlist>
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="ADRMessageType" package="eurocontrol.cfmu.cua.b2b.aixm"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="mergedCDRs" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The list of merged CDR openings and closures of this AUP.
+              Computed based on merging the explicit CDRs and the implicit CDRs (if any) according to the following criteria (simplified):
+              Merge all CDR updates for the same route, CDR type and source that overlap or touch in flight level range, applicability period or CDR update portion, where "merge" means taking the union of overlapping and touching elements. E.g. periods 09:00 until 12:00 and 10:00 until 14:00 are merged into 09:00 until 14:00.</docbook:para>
+              <docbook:para>
+                <emphasis role="underline">Presence:</emphasis>
+                <docbook:orderedlist>
+                  <docbook:listitem>
+                    <para>Must be null if <code>summary.nilAUP</code> is true.</para>
+                  </docbook:listitem>
+                  <docbook:listitem>
+                    <para>Cannot be null otherwise.</para>
+                  </docbook:listitem>
+                </docbook:orderedlist>
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="ADRMessageType" package="eurocontrol.cfmu.cua.b2b.aixm"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="implicitRSAs" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The list of implicit RSA allocations of this AUP.
+              Implicit RSA are non manageable airspaces that are automatically allocated based on the default definition existing in NM. If a non manageable Airspace is allocated explicitly instead, it will not be included in this list.</docbook:para>
+              <docbook:para>
+                <emphasis role="underline">Presence:</emphasis>
+                <docbook:orderedlist>
+                  <docbook:listitem>
+                    <para>Must be null if <code>summary.nilAUP</code> is true.</para>
+                  </docbook:listitem>
+                  <docbook:listitem>
+                    <para>Cannot be null otherwise.</para>
+                  </docbook:listitem>
+                </docbook:orderedlist>
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:TypedefType name="ADRMessageType" package="eurocontrol.cfmu.cua.b2b.aixm"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

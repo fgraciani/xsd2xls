@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="ErrorType" package="eurocontrol.cfmu.cua.b2b.common">
+  <annotations>
+    <ssm:Annotation name="xsd-strict"/>
+  </annotations>
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Lists the possible error types for this service group &#8212; see <link href="refman://Essentials.ErrorAndWarningReporting">Essentials - Error And Warning Reporting</link>.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <enumerators>
+    <ssm:Enumerator name="UNSUPPORTED_VERSION">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>This error is sent when an element in the request is not supported by the current version &#8212; no parameter</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+    <ssm:Enumerator name="ATTRIBUTE_CANNOT_BE_NULL"/>
+    <ssm:Enumerator name="ATTRIBUTE_MUST_BE_NULL"/>
+    <ssm:Enumerator name="INVALID_COLLECTION_SIZE"/>
+    <ssm:Enumerator name="INVALID_ATTRIBUTE_VALUE"/>
+    <ssm:Enumerator name="MISSING_CHOICE_VALUE">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>A choice is a constraint such that one attribute among a list of attributes must be set to a non-null value &#8212; this error is returned when no attribute involved in the choice has been set &#8212; no parameter</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+    <ssm:Enumerator name="CHOICE_OVERFLOW">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>This error is sent when more than one attribute involved in the choice have been set &#8212; no parameter</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+    <ssm:Enumerator name="REQUESTED_ATTRIBUTE_NOT_ALLOWED">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>This error is sent in replies to some requests where the client application can define itself the attributes to be returned; in some exceptional circumstances, a request may be able to specify an attribute that is actually not allowed in these scpecific circumstances &#8212; parameters:
+              <docbook:orderedlist><docbook:listitem><docbook:para>"<code>ATTRIBUTE</code>": unsupported requested attribute, expressed as a string (up to the client to cast it to the concerned enumeration)</docbook:para></docbook:listitem></docbook:orderedlist>
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+    </ssm:Enumerator>
+    <ssm:Enumerator name="UNKNOWN"/>
+  </enumerators>
+</ssm:Enum>

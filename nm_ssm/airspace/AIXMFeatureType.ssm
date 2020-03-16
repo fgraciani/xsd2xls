@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AIXMFeatureType" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>The Feature type.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <enumerators>
+    <ssm:Enumerator name="AirportHeliport"/>
+    <ssm:Enumerator name="AirportHeliportCollocation"/>
+    <ssm:Enumerator name="AirportHeliportSet"/>
+    <ssm:Enumerator name="Navaid"/>
+    <ssm:Enumerator name="DesignatedPoint"/>
+    <ssm:Enumerator name="AngleIndication"/>
+    <ssm:Enumerator name="DistanceIndication"/>
+    <ssm:Enumerator name="Route"/>
+    <ssm:Enumerator name="RouteSegment"/>
+    <ssm:Enumerator name="StandardInstrumentDeparture"/>
+    <ssm:Enumerator name="DepartureLeg"/>
+    <ssm:Enumerator name="StandardInstrumentArrival"/>
+    <ssm:Enumerator name="ArrivalLeg"/>
+    <ssm:Enumerator name="StandardLevelColumn"/>
+    <ssm:Enumerator name="StandardLevelTable"/>
+    <ssm:Enumerator name="Airspace"/>
+    <ssm:Enumerator name="OrganisationAuthority"/>
+    <ssm:Enumerator name="Unit"/>
+    <ssm:Enumerator name="SpecialDate"/>
+    <ssm:Enumerator name="AirTrafficManagementService"/>
+    <ssm:Enumerator name="FlightRestriction"/>
+    <ssm:Enumerator name="Flow"/>
+    <ssm:Enumerator name="ReferenceLocation"/>
+    <ssm:Enumerator name="TrafficVolume"/>
+    <ssm:Enumerator name="TrafficVolumeSet"/>
+    <ssm:Enumerator name="SunriseSunsetTable" added="23.0.0"/>
+    <ssm:Enumerator name="ApproachLeg" added="23.5.0"/>
+    <ssm:Enumerator name="InstrumentApproachProcedure" added="23.5.0"/>
+  </enumerators>
+</ssm:Enum>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AUPChainRetrievalReplyData" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Reply returned in response to <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.AUPChainRetrievalRequest">AUPChainRetrievalRequest</link>.</docbook:para>
+          <docbook:para>The returned AUPChain objects contain AUP summaries, each containing among others the AUP identification to be used subsequently to retrieve a complete AUP, or update/delete it.</docbook:para>
+          <docbook:para>The chain retrieval fails if the chain date is not supported or if one of the requested AMC ids does not exist in the AIRAC corresponding to the chain date.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="chains">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The retrieved AUP chains. The array can be empty.</docbook:para>
+              <docbook:para><emphasis role="underline">REMARK</emphasis>: 
+                We return OBJECT_NOT_FOUND if the AUPChain has never been created in the NM system, 
+                being for the AUPChain of today, or in 3 months. Note that the situation is slightly different for a "past" 
+                AUPChain: it is immutable (won't change anymore) so that if at the end of the day it contains no AUP 
+                we know for sure that it is empty and the NM system creates it empty. We then return an AUPChain 
+                with OK status and an empty AUP/UUP list.
+              </docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ArrayType>
+          <itemType>
+            <ssm:ClassType name="AUPChain" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+          </itemType>
+        </ssm:ArrayType>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

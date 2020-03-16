@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Class xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AUP" package="eurocontrol.cfmu.cua.b2b.airspace" usesManualValidation="true">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Represents an AUP, i.e. either indeed a (baseline) AUP or a UUP.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <manualValidationErrorType>
+    <ssm:EnumType package="eurocontrol.cfmu.cua.b2b.airspace" name="AUPValidationError"/>
+  </manualValidationErrorType>
+  <validations>
+    <ssm:Validation name="INCONSISTENT_AUP_MANUAL_ENTRIES_AND_SUMMARY_NIL_AUP">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The attribute <code>aupManualEntries</code> must be null if <code>summary.nilAUP</code> is true.</docbook:para>
+              <docbook:para>Cannot be null otherwise.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <attributes>
+        <ssm:AttributeRef name="summary"/>
+        <ssm:AttributeRef name="aupManualEntries"/>
+      </attributes>
+      <validationContexts>
+        <ssm:ValidationContextRef name="B2B_AUP_CREATION"/>
+        <ssm:ValidationContextRef name="B2B_AUP_UPDATE"/>
+      </validationContexts>
+    </ssm:Validation>
+  </validations>
+  <attributes>
+    <ssm:Attribute name="summary">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Contains the summary information of the AUP/UUP.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="AUPSummary" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="aupManualEntries" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The list of manual AUP entries managed by the client application.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="AUPManualEntries" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="aupComputedEntries" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The list of computed AUP entries as computed by the NM system.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="AUPComputedEntries" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

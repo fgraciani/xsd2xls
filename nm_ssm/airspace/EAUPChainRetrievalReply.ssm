@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="EAUPChainRetrievalReply" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="EAUPChainRetrievalReply" value="show_associations"/>
+            <ssm:AnnotationEntry key="EAUPChainRetrievalReplyData" value="show_associations"/>
+            <ssm:AnnotationEntry key="EAUPChain" value="show_content"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Reply returned in response to <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.EAUPChainRetrievalRequest">EAUPChainRetrievalRequest</link>.</docbook:para>
+          <docbook:para>The returned EAUPChain contains EAUP summaries, each containing among others the EAUP identification to be used subsequently to retrieve a complete EAUP or to query its contents.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <specialises>
+    <ssm:ClassType name="Reply" package="eurocontrol.cfmu.cua.b2b.common"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="data" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The EAUPChainRetrievalReply data</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="EAUPChainRetrievalReplyData" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

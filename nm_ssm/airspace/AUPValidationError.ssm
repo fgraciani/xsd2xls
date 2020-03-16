@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Enum xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AUPValidationError" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <annotations>
+    <ssm:Annotation name="ignore"/>
+  </annotations>
+  <enumerators>
+    <!-- only in B2B_AUP_CREATION, B2B_AUP_UPDATE contexts -->
+    <ssm:Enumerator name="INCONSISTENT_AUP_MANUAL_ENTRIES_AND_SUMMARY_NIL_AUP"/>
+  </enumerators>
+</ssm:Enum>

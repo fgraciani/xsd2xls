@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="AUPCreationRequest" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="AUPCreationRequest" value="show_associations"/>
+            <ssm:AnnotationEntry key="AUP" value="show_content"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Request to validate a new AUP and, on success, to create it.</docbook:para>
+          <docbook:para>Via NOP/B2B, an AUP can only be created by an AMC, and is thereby owned by the AMC: the AUP can then be updated by a user (certificate) associated to that AMC only.</docbook:para>
+          <docbook:para>This service is constrained in terms of timing/process. See <link href="refman://Airspace.PortTypesAndDataTypes.AUPTransitionsFigure">AUP Status Transitions</link>.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <specialises>
+    <ssm:ClassType name="Request" package="eurocontrol.cfmu.cua.b2b.common"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="aup">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>An AUP containing manual AUP entries only, i.e. its aupComputedEntries must be null.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="AUP" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+    <ssm:Attribute name="returnComputed" optional="true">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>Specifies if computed AUP entries are to be returned in addition to manual AUP entries, which are always returned as part of an AUP. False by default.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:BooleanType/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

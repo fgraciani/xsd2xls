@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="AIXMFile" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Represents a ADR AIXM file for a given DATE, DATA_SET_TYPE, UPDATE_ID, NM_RELEASE, AIXM feature type and temporality.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <specialises>
+    <ssm:ClassType name="File" package="eurocontrol.cfmu.cua.b2b.common"/>
+  </specialises>
+  <attributes/>
+</ssm:Class>

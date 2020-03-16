@@ -1,0 +1,14 @@
+[[package]]
+category = "main"
+description = "A Python module for creating Excel XLSX files."
+name = "xlsxwriter"
+optional = false
+python-versions = "*"
+version = "1.2.8"
+
+[metadata]
+content-hash = "4f945553b58bf52c67d119ad87c6d67184a27d43852a1d293ea03a8c0688f715"
+python-versions = "^3.7"
+
+[metadata.hashes]
+xlsxwriter = ["488e1988ab16ff3a9cd58c7656d0a58f8abe46ee58b98eecea78c022db28656b", "97ab487b81534415c5313154203f3e8a637d792b1e6a8201e8f7f71da0203c2a"]

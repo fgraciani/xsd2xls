@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="ADRMessageType" package="eurocontrol.cfmu.cua.b2b.aixm">
+  <annotations>
+    <ssm:Annotation name="serviceGroup" value="airspace"/>
+  </annotations>
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">This is an envelope of Features.  The envelope can be empty.  Depending on the service, the envelope can contain different types of Features.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <type>
+    <ssm:FreeType name="eurocontrol.cfmu.cua.b2b.aixm.ADRMessage"/>
+  </type>
+</ssm:Typedef>

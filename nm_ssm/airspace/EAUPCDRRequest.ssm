@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="EAUPCDRRequest" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="EAUPCDRRequest" value="show_associations"/>
+            <ssm:AnnotationEntry key="AbstractEAUPCDRRequest" value="show_content"/>
+            <ssm:AnnotationEntry key="EAUPIdentification" value="show_content"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para>Used to retrieve the CDR openings and/or closures within a given EAUP, while possibly applying a filter on the returned result set, as described in <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.AbstractEAUPCDRRequest">AbstractEAUPCDRRequest</link>, from which this request inherits.</docbook:para>
+          <docbook:para>The queried EAUP is identified using the <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.EAUPIdentification">EAUPIdentification</link> from the <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.EAUPSummary">EAUPSummary</link> returned as part of an <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.EAUPChain">EAUPChain</link>.</docbook:para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <specialises>
+    <ssm:ClassType name="AbstractEAUPCDRRequest" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+  </specialises>
+  <attributes>
+    <ssm:Attribute name="eaupId">
+      <documentation>
+        <ssm:Documentation>
+          <docbook>
+            <ssm:DocBook>
+              <docbook:para>The identification of the EAUP, extracted (and left unchanged) from an <link href="ssm://eurocontrol.cfmu.cua.b2b.airspace.EAUPSummary">EAUPSummary</link>.
+              If no other attribute is specified in this request, all the CDR openings and closures of the EAUP are returned. Mandatory.</docbook:para>
+            </ssm:DocBook>
+          </docbook>
+        </ssm:Documentation>
+      </documentation>
+      <type>
+        <ssm:ClassType name="EAUPIdentification" package="eurocontrol.cfmu.cua.b2b.airspace"/>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>

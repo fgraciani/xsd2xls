@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<ssm:Typedef xmlns:docbook="http://docbook.org/ns/docbook" xmlns:ssm="eurocontrol/cfmu/cua/ssm" name="AIRACId" package="eurocontrol.cfmu.cua.b2b.airspace">
+  <documentation>
+    <ssm:Documentation>
+      <docbook>
+        <ssm:DocBook>
+          <para xmlns="http://docbook.org/ns/docbook">Identifier of the AIRAC based on the year and a sequence number in the year.</para>
+          <para xmlns="http://docbook.org/ns/docbook">Its format is "YYSS": where YY are the last two digits of the year and SS the two digits for the AIRAC sequence number within the year. Example: "1203" is the third AIRAC of 2012.</para>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <type>
+    <ssm:StringType rule="DIGIT{4}"/>
+  </type>
+</ssm:Typedef>

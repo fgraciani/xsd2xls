@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssm:Class xmlns:ssm="eurocontrol/cfmu/cua/ssm" xmlns:docbook="http://docbook.org/ns/docbook" name="WeeklySchedule" package="eurocontrol.cfmu.cua.b2b.common">
+  <documentation>
+    <ssm:Documentation>
+      <annotations>
+        <ssm:Annotation name="uml_graph">
+          <details>
+            <ssm:AnnotationEntry key="WeeklySchedule" value="show_associations"/>
+          </details>
+        </ssm:Annotation>
+      </annotations>
+      <docbook>
+        <ssm:DocBook>
+          <docbook:para/>
+        </ssm:DocBook>
+      </docbook>
+    </ssm:Documentation>
+  </documentation>
+  <attributes>
+    <ssm:Attribute name="weeklyScheduleItems">
+      <type>
+        <ssm:SetType>
+          <itemType>
+            <ssm:ClassType name="WeeklyScheduleItem" package="eurocontrol.cfmu.cua.b2b.common"/>
+          </itemType>
+        </ssm:SetType>
+      </type>
+    </ssm:Attribute>
+  </attributes>
+</ssm:Class>
